@@ -33,7 +33,7 @@ async function readTodos() {
 }
 
 const getTodos = createServerFn({
-  method: 'GET',
+  method: 'GET', // 얘를 거쳐야 route가 등록되어 반응하나보다.
 }).handler(async () => await readTodos())
 
 const addTodo = createServerFn({ method: 'POST' })
@@ -47,7 +47,7 @@ const addTodo = createServerFn({ method: 'POST' })
 
 export const Route = createFileRoute('/demo/start/server-funcs')({
   component: Home,
-  loader: async () => await getTodos(),
+  loader: async () => (await getTodos()), // 당연하지만 여기에 server function 아닌 것이 들어가도 됨.
 })
 
 function Home() {
