@@ -59,12 +59,43 @@ yarn --version
 
 ### VS Code
 
-`.vscode/settings.json`에 다음을 추가하면 더 좋은 지원을 받을 수 있습니다:
+#### TypeScript SDK 설정 (중요!)
+
+Yarn Berry와 TypeScript를 제대로 연동하려면:
+
+**방법 1: 자동 설정 (권장)**
+
+```bash
+yarn dlx @yarnpkg/sdks vscode
+```
+
+이 명령어를 실행하면 자동으로 `.yarn/sdks/typescript/lib`을 인식합니다.
+
+**방법 2: 수동 설정**
+`.vscode/settings.json`에 다음을 추가:
 
 ```json
 {
+  "typescript.tsdk": ".yarn/sdks/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
   "search.exclude": {
     "**/.yarn": true
+  }
+}
+```
+
+그 후 **Command Palette (⌘+Shift+P)** → **TypeScript: Select TypeScript Version** → **Use Workspace Version** 선택
+
+#### 추가 설정
+
+`.vscode/settings.json`에 추가할 권장 설정:
+
+```json
+{
+  "files.watcherExclude": {
+    "**/routeTree.gen.ts": true,
+    "**/.yarn": true,
+    "**/.pnp.*": true
   }
 }
 ```
