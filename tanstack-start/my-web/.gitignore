@@ -11,3 +11,12 @@ count.txt
 .output
 .vinxi
 todos.json
+
+# Yarn Berry
+.pnp
+.pnp.cjs
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+*.pnp.*
